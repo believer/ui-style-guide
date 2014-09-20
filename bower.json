@@ -1,0 +1,19 @@
+{
+  "name": "styleshiet",
+  "main": "index.js",
+  "version": "0.0.0",
+  "authors": [
+    "Rickard <rickard.laurin@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "mrwhite-scss-mixins": "~0.4.1"
+  }
+}

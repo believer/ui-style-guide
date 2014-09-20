@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Design guide</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <style>
+      {{#each properties}}
+      .{{name}} {
+        background: {{ value }};
+      }
+      {{/each}}
+    </style>
+  </head>  
+  <body>
+    <div class="wrapper">
+      <ul class="colors">
+        {{#each properties}}
+          <li class="color {{ name }}">
+            <span>{{ value }}</span>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </body>
+</html>

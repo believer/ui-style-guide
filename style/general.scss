@@ -1,0 +1,32 @@
+@import "../bower_components/mrwhite-scss-mixins/mixins";
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+ul {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.wrapper {
+  margin: 100px auto;
+  max-width:960px;
+}
+
+.color {
+  @include border-radius(5px);
+  @include size(100px);
+
+  display: inline-block;
+  margin-right: 5px;
+  position: relative;
+
+  span {
+    @include position(bottom, left, 5px, 5px);
+
+    color: #fff;
+    text-transform: uppercase;
+  }
+}
