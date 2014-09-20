@@ -1,0 +1,13 @@
+{
+  "type": "color",
+  "properties": [
+    {
+      "name": "accent",
+      "hex": "#50dc82"
+    },
+    {
+      "name": "attention",
+      "hex": "#ff64be"
+    }
+  ]
+}

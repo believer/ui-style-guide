@@ -5,20 +5,28 @@
     <style>
       {{#each properties}}
       .{{name}} {
-        background: {{ value }};
+        background: {{ hex }};
       }
       {{/each}}
     </style>
   </head>  
   <body>
     <div class="wrapper">
-      <ul class="colors">
-        {{#each properties}}
-          <li class="color {{ name }}">
-            <span>{{ value }}</span>
-          </li>
-        {{/each}}
-      </ul>
+      <div class="colors">
+        <aside>
+          <h2>Colors</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus placeat, quod maiores reiciendis, vel unde eum rerum voluptates incidunt velit explicabo amet odio dolor illum minima neque cumque id. Omnis.</p>
+        </aside>
+        <ul>
+          {{#each properties}}
+            <li class="color">
+              <div class="color-blob {{ name }}"></div>
+              <div>RGB: <span>{{ rgb }}</span></div>
+              <div>Hex: <span>{{ hex }}</span></div>
+            </li>
+          {{/each}}
+        </ul>        
+      </div>
     </div>
   </body>
 </html>

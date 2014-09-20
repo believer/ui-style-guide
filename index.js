@@ -5,8 +5,20 @@ var path = require('path');
 var glob = require('glob');
 var mkdirp = require('mkdirp');
 var handlebars = require('handlebars');
+var sass = require('node-sass');
+var util = require('./util');
 
 module.exports = {
+
+  /**
+   * Convert supplied JSON files
+   * to LESS, SCSS and HTML
+   * 
+   * @param  {[type]} src     [description]
+   * @param  {[type]} dest    [description]
+   * @param  {[type]} options [description]
+   * @return {[type]}         [description]
+   */
   convert: function (src, dest, options) {
     if (!src) {
       throw new Error('No source has been supplied');
@@ -24,8 +36,6 @@ module.exports = {
     var files = glob.sync(src);
     var themes = [];
 
-    console.log(files);
-
     files.forEach(function (name) {
       if (path.extname(name) !== '.json') {
         return;
@@ -33,6 +43,13 @@ module.exports = {
 
       var file = fs.readFileSync(name.toString());
       file = JSON.parse(file.toString());
+
+      // Add RGB color value to object
+      if (file.type === 'color') {
+        file.properties.forEach(function (color) {
+          color.rgb = util.convertToRgb(color.hex);
+        });
+      }
 
       themes.push({
         "type": file.type,
@@ -55,6 +72,33 @@ module.exports = {
           }
         });
       });
+    });
+
+    this.renderSass(dest);
+  },
+
+  /**
+   * Render the style guide CSS to
+   * project out folder
+   * 
+   * @param  {[type]} dest [description]
+   * @return {[type]}      [description]
+   */
+  renderSass: function (dest) {
+    sass.render({
+      file: path.resolve(__dirname, 'style', 'general.scss'),
+      outputStyle: 'compressed',
+      success: function (res) {
+        mkdirp(dest + 'style/');
+        fs.writeFile(dest + 'style/style.css' , res, function (err) {
+          if (err) {
+            console.log(err);
+          }
+        });
+      },
+      error: function (err) {
+        console.log(err);
+      }
     });
   }
 };

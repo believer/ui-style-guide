@@ -1,7 +1,11 @@
 @import "../bower_components/mrwhite-scss-mixins/mixins";
 
+$aside-width: 30%;
+$margin: 40px;
+
 body {
   font-family: 'Open Sans', sans-serif;
+  margin:0;
 }
 
 ul {
@@ -10,23 +14,53 @@ ul {
   padding:0;
 }
 
-.wrapper {
-  margin: 100px auto;
-  max-width:960px;
+h2 {
+  color: #0089B9;
 }
 
-.color {
-  @include border-radius(5px);
-  @include size(100px);
+.wrapper {
+  aside {
+    @include box-sizing();
+    @include size(30%, 100%);
 
-  display: inline-block;
-  margin-right: 5px;
-  position: relative;
+    background: #f5f5f5;
+    float: left;
+    max-width: $aside-width;
+    padding: $margin;
+    padding-left: $margin + 20px;
+  }
+}
 
-  span {
-    @include position(bottom, left, 5px, 5px);
+.colors {
+  ul {
+    @include box-sizing();
 
-    color: #fff;
-    text-transform: uppercase;
+    float:left;
+    max-width: 100% - $aside-width;
+    padding: ($margin * 2 + 20px) ($margin * 2);
+  }
+
+  .color {
+    display: inline-block;
+    margin-right: $margin;
+
+    &:nth-child(n+5) {
+      margin-top: $margin;
+    }
+
+    .color-blob {
+      $size: 100px;
+
+      @include border-radius($size);
+      @include size($size);
+
+      margin-bottom: $margin / 2;
+      position: relative;
+    }
+
+    span {
+      font-weight:700;
+      text-transform: uppercase;
+    }
   }
 }
