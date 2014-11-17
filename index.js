@@ -1,15 +1,14 @@
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var glob = require('glob');
-var mkdirp = require('mkdirp');
+var fs         = require('fs');
+var path       = require('path');
+var glob       = require('glob');
+var mkdirp     = require('mkdirp');
 var handlebars = require('handlebars');
-var sass = require('node-sass');
-var util = require('./util');
+var sass       = require('node-sass');
+var util       = require('./util');
 
 module.exports = {
-
   /**
    * Convert supplied JSON files
    * to LESS, SCSS and HTML
